@@ -1,0 +1,13 @@
+schema { # schema关键字用于定义schema入口
+    query: Query # query是规定的入口字段，这里表示所有的查询都是查询 Query 类型下的字段
+}
+
+type Query { # type 关键字用于定义结构
+    node: Node # 因为我们要将Post和User分离出去，由于结构定义不允许空结构，Node在这里只是作为占位
+}
+
+type Node {
+    id: ID # ID 类型，ID类型代表唯一性，值可以是数字或字符串
+}
+
+scalar Date # 自定义Date类型

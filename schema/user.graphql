@@ -1,0 +1,18 @@
+type User {             # 定义User结构
+    id: ID              # ID 类型，原始类型
+    name: String        # String 字符串类型，原始类型
+    age: Int            # Int 整数类型，原始类型
+    available: Boolean  # Boolean 类型，值为 true/false，原始类型
+    money: Float        # Float 浮点类型，原始类型
+    gender: Gender      # Gender 性别枚举类型
+    birthday: Date      # Date 自定义日期类型
+}                       # 标量类型可参见 http://spec.graphql.cn/#sec-Scalars-
+
+enum Gender {           # enum 用于定义枚举类型
+    FEMALE              # 枚举值，若没有对应的resolve值，将会是字符串
+    MALE
+}
+
+extend type Query {     # extend 扩展 Query 结构，相当于 type Query { user(id: ID!): User }
+    user(id: ID!): User # user表示查询字段，id: ID! 表示查询时的输入值，!表示必须由此输入值，返回 User结构的数据，可以将这种写法当作函数来理解，user函数名，id 输入值，User 返回类型
+}
